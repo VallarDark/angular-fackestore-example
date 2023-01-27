@@ -1,0 +1,35 @@
+<ng-template [ngIf]="showDetails">
+    <div class="background"></div>
+</ng-template>
+
+
+    <div class="product p-3 {{showDetails==true?'detailed':''}}">
+        <div class="product-data">
+        <div class="product-title h3 p-2 border-bottom border-light">{{title}}</div>
+
+        <div class="product-img-frame">
+            <img [src] = "image" [alt]="title" class="product-img img-fluid  mx-auto d-block p-2">
+        </div>
+
+        <div class="product-id p-2">{{id}}</div>
+
+        <div>
+            <div class="product-category h5 px-3 py-2 m-2 text-white bg-dark rounded-pill">{{category}}</div>
+        </div>
+        <div class="p-2 h2">Price: {{price| currency}}</div>
+        <div class="p-2">
+            <button (click)="showDetails=!showDetails" class = "btn {{showDetails==true?'btn-primary':'btn-danger'}}"> {{showDetails==true?"Hide":"Show"}} info</button>
+        </div>
+        <ng-template [ngIf]="showDetails">
+            <div class="details p-2">
+                <div class="p-2">{{description}}</div>      
+                <div class="p-2">          
+                    <ngb-rating [(rate)]="rating.rate" [readonly]="true" [max]="5"></ngb-rating>     
+                    <hr />     
+                    <pre>Rate: <b>{{rating.rate}}</b></pre>
+                </div>
+                <div class="p-2 h3">Now available: {{rating.count}}</div>
+            </div>           
+        </ng-template>
+    </div>
+</div>  
