@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IProduct } from 'src/app/contracts/IProduct';
+import { EmptyProduct } from 'src/app/models/EmptyProduct';
 
 @Component({
   selector: 'app-product',
@@ -7,16 +8,10 @@ import { IProduct } from 'src/app/contracts/IProduct';
   styleUrls: ['./app-product.component.scss']
 })
 
-export class AppProduct implements IProduct
+export class AppProduct 
 {
-  
+  @Input() product:IProduct = new EmptyProduct();
+
   showDetails = false;
-    
-  @Input() id: number = 0;
-  @Input() price: number = 0;
-  @Input() description: string = '';
-  @Input() category: string = '';
-  @Input() image: string = '';
-  @Input() rating!: { rate: number; count: number; };
-  @Input() title ='';
+  titleIsHover = false;
 }

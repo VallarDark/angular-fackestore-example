@@ -1,4 +1,4 @@
-export interface IRepository{
-    GetById(id:number):any,
-    GetAll(pageNumber:number, countPerPage: number):any
+export abstract class IRepository<T>{
+    abstract GetById(id:number): Promise<T>;
+    abstract GetAll(pageNumber:number, countPerPage: number): Promise<T[]>;
 }

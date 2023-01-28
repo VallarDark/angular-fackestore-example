@@ -1,15 +1,28 @@
 import { IRepository } from '../../contracts/IRepository';
 import { IProduct } from '../../contracts/IProduct';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
-export class ProductRepository implements IRepository
+
+@Injectable()
+export class ProductRepository implements IRepository<IProduct>
 {
-    async GetById(id: number) 
-    {
-        return await fetch(`https://fakestoreapi.com/products/${id}`)
-            .then(res=>res.json() as unknown as IProduct);
+    private _client: HttpClient;
+
+    constructor(client: HttpClient) {
+        this._client = client;
     }
 
-    async GetAll(pageNumber: number, countPerPage: number) 
+    public async GetById(id: number)
+    {
+        let data = this._client
+            .get<IProduct>(`https://fakestoreapi.com/products/${id}`);    
+
+        return await firstValueFrom(data);
+    }
+
+    public async GetAll(pageNumber: number, countPerPage: number) 
     {
         pageNumber = pageNumber < 1 ? 1 : pageNumber;
 
@@ -17,9 +30,14 @@ export class ProductRepository implements IRepository
 
         let startIndex = (pageNumber - 1)  * countPerPage;
 
-        let data = await fetch(`https://fakestoreapi.com/products?limit=${limit}`)
-        .then(res=>res.json() as unknown as IProduct[]);
+        let queryParams = new HttpParams();
 
-        return data.slice(startIndex);      
+        queryParams = queryParams.append('limit', limit);
+
+        let data = this._client.get<IProduct[]>(
+            `https://fakestoreapi.com/products`,
+            { params: queryParams})
+        
+        return (await firstValueFrom(data)).slice(startIndex);
     }
 }

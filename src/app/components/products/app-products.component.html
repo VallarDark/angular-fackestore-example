@@ -1,25 +1,22 @@
 <div class="container">
     <h4 class="border-bottom border-light rounded-right p-2">Products</h4>
     <div>
-        <div class="products-container w-100">
+        <div class="products-container container w-100">
         <app-product *ngFor="let item of Products"
-            [title]="item.title"
-            [id]="item.id"
-            [image]="item.image"
-            [category]="item.category"
-            [description]="item.description"
-            [price]="item.price"
-            [rating]="item.rating"
+            [product]="item"
         >
         </app-product>
         </div>
-        <div class="products-nav-menu mt-2 w-100">
-            <div class="row px-4 py-2">
+        <app-popup-window></app-popup-window>
+        <div class="products-nav-menu rounded container mt-4 w-100">
+            <div class="row px-4 py-3">
             <button type="button" (click)="movePpreviousPage()" class="btn btn-primary col">PreviousPage</button>
-            <div class="col-6"></div>
+            <div class="col-6 px-4 py-2 text-center">Current page: <b>{{Page}}</b></div>
             <button type="button" (click)="moveNextPage()" class="btn btn-primary col">NextPafe</button>
         </div>
         </div>       
     </div>
+
 </div>
+
     
