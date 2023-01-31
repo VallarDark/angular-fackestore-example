@@ -1,20 +1,22 @@
-<div class="container">
-    <h4 class="border-bottom border-light rounded-right p-2">Products</h4>
+<div>
+    <ng-template [ngIf]="this.title">
+        <h4 class="border-bottom border-light rounded-right p-2">{{title}}</h4>
+    </ng-template>
     <div>
-        <div class="products-container container w-100">
+        <div class="products-container w-100">
         <app-product *ngFor="let item of Products"
             [product]="item"
         >
         </app-product>
         </div>
-        <app-popup-window></app-popup-window>
-        <div class="products-nav-menu rounded container mt-4 w-100">
+        <div class="products-nav-menu rounded mt-4 w-100">
             <div class="row px-4 py-3">
-            <button type="button" (click)="movePpreviousPage()" class="btn btn-primary col">PreviousPage</button>
-            <div class="col-6 px-4 py-2 text-center">Current page: <b>{{Page}}</b></div>
-            <button type="button" (click)="moveNextPage()" class="btn btn-primary col">NextPafe</button>
+            <button type="button" (click)="movePpreviousPage()" class="btn btn-primary col {{isFirstPage?'cursor-not-allowed':''}}">Previous Page</button>
+            <div class="col-6 px-4 py-2 text-center text-xl">Current page: <b>{{Page}}</b></div>
+            <button type="button" (click)="moveNextPage()" class="btn btn-primary col {{isLastPage?'cursor-not-allowed':''}}">Next Page</button>
         </div>
-        </div>       
+        </div>   
+        <app-popup-window title="Create product"></app-popup-window>    
     </div>
 
 </div>

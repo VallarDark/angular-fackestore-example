@@ -1,0 +1,13 @@
+.error{
+    background-color: rgb(218, 22, 22);
+    color: rgb(255, 255, 255);
+    align-items: center;
+    justify-content: center;
+}
+.error-btn{
+    --size:25px;
+
+    width: var(--size);
+    height: var(--size);
+    text-align: center;
+}

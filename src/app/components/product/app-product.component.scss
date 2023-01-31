@@ -12,12 +12,11 @@
     min-height: 25%;
 }
 .detailed{
-    background-color: rgb(235, 251, 251);
+    background-color: rgb(251, 251, 251);
 }
 .details{
     background-color: rgb(251, 251, 251);
     width: 100%;
-    z-index: 2;
     border-radius: 5px;
 }
 .hovertext{
@@ -32,4 +31,10 @@
     border-color: rgb(150, 150, 150);
     border-style: dotted;
     border-width: 3px;
+}
+.show-info-btn{
+    background-color: rgb(168, 98, 14);
+}
+.hide-info-btn{
+    background-color: rgb(184, 65, 18);
 }

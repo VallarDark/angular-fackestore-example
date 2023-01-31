@@ -8,7 +8,7 @@ import { Component, Input, TRANSLATIONS } from '@angular/core';
 
 export class PopupWindowComponent {
  
-  private _isShown:boolean = true;
+  private _isShown:boolean = false;
   
   public get isShown(): boolean {
     return this._isShown;

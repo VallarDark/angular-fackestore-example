@@ -1,6 +1,7 @@
-import {IRating} from "./IRating"
+import {IRating} from "./IRating";
 
-export interface IProduct{
+export interface IProduct
+{
     id: number,
     title: string,
     price: number,

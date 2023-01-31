@@ -1,7 +1,8 @@
-import{IProduct} from "../contracts/IProduct"
+import { IProduct } from "../contracts/IProduct";
 import { IRating } from "../contracts/IRating";
 
-export class EmptyProduct implements IProduct{
+export class EmptyProduct implements IProduct
+{
     id: number = 0;
     title: string = '';
     price: number = 0;

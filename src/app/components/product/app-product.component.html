@@ -34,7 +34,7 @@
             <hr class="border-2">
 
         <div class="p-2">
-            <button (click)="showDetails=!showDetails" class = "btn {{showDetails==true?'btn-primary':'btn-danger'}}"> {{showDetails==true?"Hide":"Show"}} info</button>
+            <button (click)="showDetails=!showDetails" class = "btn px-4 py-2 text-white {{showDetails==true?'hide':'show'}}-info-btn"> {{showDetails==true?"Hide":"Show"}} info</button>
         </div>
         <ng-template [ngIf]="showDetails">
             <div class="details p-2">
