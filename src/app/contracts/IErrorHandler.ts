@@ -1,8 +1,10 @@
-import { Subject } from "rxjs";
+import { Injectable } from "@angular/core";
 import { IError } from "./IError";
 
-export abstract class IErrorHandler<T extends IError> 
+@Injectable({
+    providedIn: 'root'
+  })
+export abstract class IErrorHandler<T extends IError>
 {
-    abstract Handle(error:T): void;
-    abstract error$: Subject<IError>;
+    abstract Handle(error: T): void;
 }

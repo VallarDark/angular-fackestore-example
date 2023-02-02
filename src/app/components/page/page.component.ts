@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IError } from 'src/app/contracts/IError';
-import { IErrorHandler } from 'src/app/contracts/IErrorHandler';
+import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
   selector: 'app-page',
@@ -9,15 +9,15 @@ import { IErrorHandler } from 'src/app/contracts/IErrorHandler';
   styleUrls: ['./page.component.scss']
 })
 export class PageComponent {
-  @Input() title:string='';
+  @Input() name: string = '';
 
-  private _errorHandler:IErrorHandler<IError>
+  private _errorService: ErrorService
 
-  public get error$(): Subject<IError>{
-    return this._errorHandler.error$;
+  public get errors$(): Subject<IError[]> {
+    return this._errorService.errors$;
   }
 
-  constructor(errorHandler:IErrorHandler<IError>) {
-    this._errorHandler = errorHandler;
+  constructor(private errorService: ErrorService) {
+    this._errorService = errorService;
   }
 }

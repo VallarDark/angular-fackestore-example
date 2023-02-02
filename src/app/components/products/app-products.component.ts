@@ -13,14 +13,16 @@ export class AppProducts implements OnInit {
   private _products: IProduct[] = [];
   private _page = 1;
 
+  public searchPhrase: string = '';
+
   @Input() columns: number = 3;
   @Input() rows: number = 2;
-  @Input() title: string = '';
+  @Input() header: string = 'Products';
 
   public get isLastPage(): boolean {
     return this._products.length < this.GetPageCount();
   }
-  
+
   public get isFirstPage(): boolean {
     return this._page == 1;
   }
@@ -34,7 +36,16 @@ export class AppProducts implements OnInit {
   }
 
   public get Products(): IProduct[] {
-    return this._products;
+    if (this.searchPhrase.length == 0) {
+      return this._products;
+    }
+
+    // It's locale page search. Fakestore api can't receive products by filters..
+
+    let normalizedSearchPhrase = this.searchPhrase.toLocaleLowerCase();
+
+    return this._products.filter(p => p.title.toLocaleLowerCase().includes(normalizedSearchPhrase)
+      || p.description.toLocaleLowerCase().includes(normalizedSearchPhrase));
   }
 
   public async moveNextPage() {

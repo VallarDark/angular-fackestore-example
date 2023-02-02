@@ -13,5 +13,4 @@ export class AppProduct
   @Input() product:IProduct = new EmptyProduct();
 
   showDetails = false;
-  titleIsHover = false;
 }

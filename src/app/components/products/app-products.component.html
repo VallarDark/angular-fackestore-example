@@ -1,24 +1,32 @@
 <div>
-    <ng-template [ngIf]="this.title">
-        <h4 class="border-bottom border-light rounded-right p-2">{{title}}</h4>
-    </ng-template>
+    <div class="flex">
+        <h4 class="rounded-right p-2 mr-4">{{header}}</h4>
+        <input class="border w-100 py-2 px-4" placeholder="Input your request..." [(ngModel)]="searchPhrase">
+    </div>
+    <hr class="mt-2">
     <div>
-        <div class="products-container w-100">
-        <app-product *ngFor="let item of Products"
-            [product]="item"
-        >
-        </app-product>
+        <div class="flex">
+            <div class="filters flex flex-col mr-2">
+                <p class="h5 py-2 px-4 mb-0">Filters</p>
+                <hr class="mt-0 w-90">
+                <div class="flex">
+                    <p class="h6 py-2 px-4 mb-0">Categories</p>
+                </div>
+            </div>
+            <div class="products-container w-100">
+                <app-product *ngFor="let item of Products" [product]="item">
+                </app-product>
+            </div>
         </div>
         <div class="products-nav-menu rounded mt-4 w-100">
             <div class="row px-4 py-3">
-            <button type="button" (click)="movePpreviousPage()" class="btn btn-primary col {{isFirstPage?'cursor-not-allowed':''}}">Previous Page</button>
-            <div class="col-6 px-4 py-2 text-center text-xl">Current page: <b>{{Page}}</b></div>
-            <button type="button" (click)="moveNextPage()" class="btn btn-primary col {{isLastPage?'cursor-not-allowed':''}}">Next Page</button>
+                <button type="button" (click)="movePpreviousPage()" class="btn btn-primary col"
+                    [disabled]="isFirstPage?'true':''">Previous Page</button>
+                <div class="col-6 px-4 py-2 text-center text-xl">Current page: <b>{{Page}}</b></div>
+                <button type="button" (click)="moveNextPage()" class="btn btn-primary col"
+                    [disabled]="isLastPage?'true':''">Next Page</button>
+            </div>
         </div>
-        </div>   
-        <app-popup-window title="Create product"></app-popup-window>    
+        <app-popup-window title="Add product to cart"></app-popup-window>
     </div>
-
 </div>
-
-    

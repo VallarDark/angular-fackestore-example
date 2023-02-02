@@ -1,40 +1,121 @@
-.product{
+.product {
+    --test:rgb(152, 196, 82);
+
+    --title-collor1-r: 175;
+    --title-collor1-g: 145;
+    --title-collor1-b: 35;
+
+    --btn-collor1-r: 145;
+    --btn-collor1-g: 155;
+    --btn-collor1-b: 75;
+
+    --btn-collor2-r: 205;
+    --btn-collor2-g: 75;
+    --btn-collor2-b: 55;
+
+    --hovered-addition: 25;
+
+    --title-collor1: rgb(var(--title-collor1-r), var(--title-collor1-g), var(--title-collor1-b));
+    --title-collor1-hovered: rgb(
+        calc(var(--title-collor1-r) + var(--hovered-addition)),
+        calc(var(--title-collor1-g) + var(--hovered-addition)),
+        calc(var(--title-collor1-b) + var(--hovered-addition)));
+
+    --btn-collor1: rgb(var(--btn-collor1-r), var(--btn-collor1-g), var(--btn-collor1-b));
+    --btn-collor1-hovered: rgb(
+        calc(var(--btn-collor1-r) + var(--hovered-addition)),
+        calc(var(--btn-collor1-g) + var(--hovered-addition)),
+        calc(var(--btn-collor1-b) + var(--hovered-addition)));
+    
+    --btn-collor2: rgb(var(--btn-collor2-r), var(--btn-collor2-g), var(--btn-collor2-b));
+    --btn-collor2-hovered: rgb(
+        calc(var(--btn-collor2-r) + var(--hovered-addition)),
+        calc(var(--btn-collor2-g) + var(--hovered-addition)),
+        calc(var(--btn-collor2-b) + var(--hovered-addition)));
+
+
     border-radius: 5px;
     background-color: rgb(235, 235, 235);
     border: 1px solid rgb(165, 165, 165);
     height: 100%;
     position: relative;
 }
-.product-img{
+
+.product-title{
+    border-radius: 5px 5px 35% 25px;
+    border-width: 2px 5px;
+    outline-offset: -12px;
+    outline-color: var(--title-collor1);
+    outline-width: 3px;
+    outline-style: dashed; //outset/dashed
+    border-color: rgb(255, 255, 255);
+    border-style: outset;
+    border-width: 7px;
+    background-color: black;
+}
+.product-title:hover{
+    background-color: rgb(var( --hovered-addition), var( --hovered-addition), var( --hovered-addition));
+}
+
+.product-img {
     max-height: 35vh;
 }
-.product-img-bg{
+
+.product-img-bg {
     min-height: 25%;
 }
-.detailed{
+
+.detailed {
     background-color: rgb(251, 251, 251);
 }
-.details{
+
+.details {
     background-color: rgb(251, 251, 251);
     width: 100%;
     border-radius: 5px;
 }
-.hovertext{
+
+.hovertext {
     top: 110%;
     left: 0;
 }
-.border-1{
+
+.border-1 {
     border-color: black;
-    border-width: 2px;
+    border-color: var(--title-collor1);
+    border-width: 3px;
 }
-.border-2{
-    border-color: rgb(150, 150, 150);
+
+.border-2 {
+    border-color: rgb(172, 172, 172);
     border-style: dotted;
     border-width: 3px;
 }
-.show-info-btn{
-    background-color: rgb(168, 98, 14);
+
+.border-3{
+    border: 2px double rgb(255, 255, 255);
 }
-.hide-info-btn{
-    background-color: rgb(184, 65, 18);
+
+.shadowed {
+    box-shadow: 1px 2px 5px -2px rgb(60, 60, 60);
+}
+
+.info-btn {   
+    border-radius: 5px;
+}
+
+.show-info-btn {
+    background-color: var(--btn-collor1);
+}
+
+.show-info-btn:hover {
+    background-color: var(--btn-collor1-hovered);
+}
+
+.hide-info-btn {
+    background-color: var(--btn-collor2);
+}
+
+.hide-info-btn:hover {
+    background-color: var(--btn-collor2-hovered);
 }

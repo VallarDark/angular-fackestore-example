@@ -14,8 +14,10 @@ import { ErrorComponent } from './components/error/error.component';
 import { PageComponent } from './components/page/page.component';
 import { AppComponent } from './components/app/app.component';
 import { IErrorHandler } from './contracts/IErrorHandler';
-import { ErrorHandler } from './services/Error.service';
+import { UserShownErrorHandler } from './services/user-shown.error.handler';
 import { IError } from './contracts/IError';
+import { ErrorService } from './services/error.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -26,14 +28,15 @@ import { IError } from './contracts/IError';
         PageComponent,
         AppComponent      
     ],
-    providers: [
+    providers: [   
+         ErrorService, 
+        {
+            provide: IErrorHandler<IError>,
+            useClass: UserShownErrorHandler
+        },       
         {
             provide: IRepository<IProduct>,
             useClass: ProductRepository
-        },
-        {
-            provide: IErrorHandler<IError>,
-            useClass: ErrorHandler
         }
     ],
     bootstrap: [AppComponent],
@@ -41,7 +44,8 @@ import { IError } from './contracts/IError';
         BrowserModule,
         AppRoutingModule,
         NgbModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
     ]
 })
 export class AppModule { }

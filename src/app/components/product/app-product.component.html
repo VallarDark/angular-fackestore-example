@@ -4,13 +4,10 @@
 
     <div class="product p-3 {{showDetails?'detailed':''}}">
 
-        <div class="flex px-4 py-3 w-100 text-2xl relative rounded-br-[30%] outline-2 outline-offset-4 outline-dashed outline-red-300 text-white bg-dark h-28">
-            <p (pointerover)="titleIsHover=true" (pointerout)="titleIsHover=false" class="line-clamp-2 m-auto max-h-100 text-clip overflow-hidden">           
+        <div title="{{product.title}}" class="flex product-title cursor-help px-4 py-2 w-100 text-2xl relative text-white h-28">
+            <p class="line-clamp-2 m-auto max-h-100 text-clip overflow-hidden">           
                 {{product.title}}
-            </p>    
-            <span *ngIf="titleIsHover" class="absolute hovertext text-white bg-opacity-75 bg-dark bg-gradient w-100 z-10 text-sm rounded px-2 py-1">
-                {{product.title}}
-            </span>      
+            </p>      
         </div>
 
         <div class="position-relative h-75 w-100">               
@@ -24,7 +21,7 @@
             <hr class="border-1">
 
             <div class="flex w-100">
-                <div class="w-fit text-lg px-4 py-2 text-white bg-dark rounded-pill">{{product.category}}</div>
+                <div class="w-fit shadowed  text-lg px-3 py-1 text-white bg-dark rounded-pill">{{product.category}}</div>
             </div>
 
             <hr class="border-2">
@@ -34,7 +31,7 @@
             <hr class="border-2">
 
         <div class="p-2">
-            <button (click)="showDetails=!showDetails" class = "btn px-4 py-2 text-white {{showDetails==true?'hide':'show'}}-info-btn"> {{showDetails==true?"Hide":"Show"}} info</button>
+            <button (click)="showDetails=!showDetails" class = "info-btn shadowed border-3 px-4 py-2 text-lg text-white {{showDetails==true?'hide':'show'}}-info-btn"> {{showDetails==true?"Hide":"Show"}} info</button>
         </div>
         <ng-template [ngIf]="showDetails">
             <div class="details p-2">
